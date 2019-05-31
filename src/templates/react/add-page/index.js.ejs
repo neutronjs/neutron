@@ -1,0 +1,19 @@
+import React, { useState, useEffect } from 'react';
+
+import { Container } from './styles';
+
+function <%= props.name %>() {
+  const [message, setMessage] = useState(null);
+
+  useEffect(() => {
+    setMessage('<%= props.name %> page!');
+  }, []);
+
+  return (
+    <Container>
+      <h1>{message}</h1>
+    </Container>
+  );
+}
+
+export default <%= props.name %>;

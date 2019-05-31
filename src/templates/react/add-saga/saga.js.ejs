@@ -1,0 +1,25 @@
+/* eslint-disable no-console */
+import { call, put } from 'redux-saga/effects';
+
+import api from '../../services/api';
+import notification from '../../utils/notification';
+
+import <%= props.name %>Actions from '../ducks/<%= props.nameAsLower %>';
+
+export function* get<%= props.name %>Request() {
+  try {
+    const endpoint = '/<%= props.nameAsLower %>';
+
+    const { data } = yield call(api.get, endpoint);
+
+    yield put(<%= props.name %>Actions.get<%= props.name %>Success(data));
+  } catch (error) {
+    notification.error('An unexpected error has occurred!');
+
+    if (console.tron) {
+      console.tron.error(error);
+    }
+
+    yield put(<%= props.name %>Actions.get<%= props.name %>Failure());
+  }
+}

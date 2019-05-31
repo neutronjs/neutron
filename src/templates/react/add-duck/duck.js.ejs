@@ -1,0 +1,48 @@
+import { createReducer, createActions } from 'reduxsauce';
+import Immutable from 'seamless-immutable';
+
+/* Types & Action Creators */
+
+const { Types, Creators } = createActions({
+  get<%= props.name %>Request: [],
+  get<%= props.name %>Success: ['data'],
+  get<%= props.name %>Failure: [],
+});
+
+export const <%= props.name %>Types = Types;
+export default Creators;
+
+/* Initial State */
+
+export const INITIAL_STATE = Immutable({
+  loading: false,
+  data: [],
+  error: false,
+});
+
+/* Reducers */
+
+const get<%= props.name %>Request = state => state.merge({
+  ...state,
+  loading: true,
+});
+
+const get<%= props.name %>Success = (state, { data }) => state.merge({
+  data,
+  loading: false,
+  error: false,
+});
+
+const get<%= props.name %>Failure = state => state.merge({
+  ...state,
+  error: true,
+  loading: false,
+});
+
+/* Reducers to types */
+
+export const reducer = createReducer(INITIAL_STATE, {
+  [Types.GET_<%= props.nameAsUpper %>_REQUEST]: get<%= props.name %>Request,
+  [Types.GET_<%= props.nameAsUpper %>_SUCCESS]: get<%= props.name %>Success,
+  [Types.GET_<%= props.nameAsUpper %>_FAILURE]: get<%= props.name %>Failure,
+});

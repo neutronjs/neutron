@@ -1,0 +1,75 @@
+{
+  "name": "@somadevs/neutron",
+  "description": "This CLI was developed to help developers create new projects quickly and easily",
+  "version": "0.1.0",
+  "main": "build/cli.js",
+  "license": "MIT",
+  "bin": {
+    "neutron": "bin/neutron"
+  },
+  "scripts": {
+    "format": "prettier --write **/*.{js,ts,tsx,json}",
+    "lint": "tslint -p .",
+    "compile": "tsc -p .",
+    "copytemplate": "cp -rf src/templates build/templates",
+    "build": "yarn format && yarn lint && yarn compile && yarn copytemplate",
+    "test": "jest",
+    "watch": "jest --watch",
+    "snapupdate": "jest --updateSnapshot",
+    "coverage": "jest --coverage"
+  },
+  "author": {
+    "name": "Thiago de Souza",
+    "email": "email@thiagodesouza.com.br",
+    "url": "https://www.thiagodesouza.com.br"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/somadevs/neutron"
+  },
+  "keywords": [
+    "neutron",
+    "react",
+    "somadevs",
+    "node",
+    "typescript",
+    "gluegun"
+  ],
+  "files": [
+    "tsconfig.json",
+    "tslint.json",
+    "build",
+    "LICENSE",
+    "readme.md",
+    "docs",
+    "bin"
+  ],
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "dependencies": {
+    "create-react-app": "^3.0.1",
+    "gluegun": "^3.3.0",
+    "ts-node": "^8.2.0",
+    "typescript": "^3.5.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
+    "@types/jest": "^24.0.13",
+    "@types/node": "^12.0.4",
+    "husky": "^2.3.0",
+    "jest": "^24.8.0",
+    "prettier": "^1.12.1",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.12.0",
+    "tslint-config-prettier": "^1.17.0",
+    "tslint-config-standard": "^8.0.1"
+  }
+}
