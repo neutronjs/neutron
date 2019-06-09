@@ -42,7 +42,7 @@ const get<%= props.name %>Failure = state => state.merge({
 /* Reducers to types */
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.GET_<%= props.nameAsUpper %>_REQUEST]: get<%= props.name %>Request,
-  [Types.GET_<%= props.nameAsUpper %>_SUCCESS]: get<%= props.name %>Success,
-  [Types.GET_<%= props.nameAsUpper %>_FAILURE]: get<%= props.name %>Failure,
+  [Types.GET_<%= props.upperCaseName %>_REQUEST]: get<%= props.name %>Request,
+  [Types.GET_<%= props.upperCaseName %>_SUCCESS]: get<%= props.name %>Success,
+  [Types.GET_<%= props.upperCaseName %>_FAILURE]: get<%= props.name %>Failure,
 });

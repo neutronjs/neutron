@@ -4,11 +4,11 @@ import { call, put } from 'redux-saga/effects';
 import api from '../../services/api';
 import notification from '../../utils/notification';
 
-import <%= props.name %>Actions from '../ducks/<%= props.nameAsLower %>';
+import <%= props.name %>Actions from '../ducks/<%= props.camelCaseName %>';
 
 export function* get<%= props.name %>Request() {
   try {
-    const endpoint = '/<%= props.nameAsLower %>';
+    const endpoint = '/<%= props.camelCaseName %>';
 
     const { data } = yield call(api.get, endpoint);
 

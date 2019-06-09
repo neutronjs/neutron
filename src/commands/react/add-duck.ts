@@ -13,9 +13,10 @@ module.exports = {
       return
     }
 
-    const name = strings.camelCase(parameters.first)
-    const nameAsUpper = strings.upperCase(name)
-    const file = `src/store/ducks/${name}.js`
+    const name = strings.pascalCase(parameters.first)
+    const camelCaseName = strings.camelCase(parameters.first)
+    const upperCaseName = strings.upperCase(name)
+    const file = `src/store/ducks/${camelCaseName}.js`
 
     if (filesystem.exists(file)) {
       terminal.error(`This duck already exists: ${file}`)
@@ -25,7 +26,7 @@ module.exports = {
     await template.generate({
       template: 'react/add-duck/duck.js.ejs',
       target: file,
-      props: { name, nameAsUpper }
+      props: { name, upperCaseName }
     })
 
     terminal.info(`Creating new duck: "${file}" ...`)
@@ -33,6 +34,8 @@ module.exports = {
       'A new duck was created! Please, add duck reference into "src/store/ducks/index.js":'
     )
 
-    terminal.info(`  import { reducer as ${name} } from './${name}';`)
+    terminal.info(
+      `  import { reducer as ${camelCaseName} } from './${camelCaseName}';`
+    )
   }
 }

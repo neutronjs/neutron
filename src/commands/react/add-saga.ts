@@ -13,10 +13,10 @@ module.exports = {
       return
     }
 
-    const name = strings.camelCase(parameters.first)
-    const nameAsPascal = strings.pascalCase(parameters.first)
+    const name = strings.pascalCase(parameters.first)
+    const camelCaseName = strings.camelCase(parameters.first)
 
-    const file = `src/store/sagas/${name}.js`
+    const file = `src/store/sagas/${camelCaseName}.js`
 
     if (filesystem.exists(file)) {
       terminal.error(`This saga already exists: ${file}`)
@@ -26,7 +26,7 @@ module.exports = {
     await template.generate({
       template: 'react/add-saga/saga.js.ejs',
       target: file,
-      props: { name }
+      props: { name, camelCaseName }
     })
 
     terminal.info(`Creating new saga: "${file}" ...`)
@@ -34,7 +34,7 @@ module.exports = {
       'A new saga was created! Please, add saga reference into "src/store/sagas/index.js":'
     )
 
-    terminal.info(`  import { ${nameAsPascal}Types } from '../ducks/${name}';`)
-    terminal.info(`  import { add${nameAsPascal}Request } from './${name}';)`)
+    terminal.info(`  import { ${name}Types } from '../ducks/${camelCaseName}';`)
+    terminal.info(`  import { add${name}Request } from './${camelCaseName}';)`)
   }
 }
