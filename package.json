@@ -1,7 +1,7 @@
 {
   "name": "@somadevs/neutron",
   "description": "This CLI was developed to help developers create new projects quickly and easily",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "build/cli.js",
   "license": "MIT",
   "bin": {
@@ -11,7 +11,7 @@
     "format": "prettier --write **/*.{js,ts,tsx,json}",
     "lint": "tslint -p .",
     "compile": "tsc -p .",
-    "copytemplate": "cp -rf src/templates build/templates",
+    "copytemplate": "rm -rf build/templates && yes | cp -rf src/templates build/templates",
     "build": "yarn format && yarn lint && yarn compile && yarn copytemplate",
     "test": "jest",
     "watch": "jest --watch",
