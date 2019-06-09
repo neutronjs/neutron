@@ -34,7 +34,7 @@ $ neutron -h
   react add:duck         Add new duck file
   react add:page         Add new page files
   react add:saga         Add new saga file
-  react create           reate new app using create-react-app with Duck Pattern
+  react create           Create new app using create-react-app with Duck Pattern
   help (h)               -
   version (v)            Output the version number
 ```
