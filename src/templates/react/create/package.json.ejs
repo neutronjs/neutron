@@ -1,0 +1,68 @@
+{
+  "name": "<%= props.name %>",
+  "version": "0.0.1",
+  "private": false,
+  "license": "MIT",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "dependencies": {
+    "@rocketseat/unform": "^1.5.1",
+    "axios": "^0.19.0",
+    "connected-react-router": "^6.4.0",
+    "dotenv": "^8.0.0",
+    "history": "^4.9.0",
+    "lodash": "^4.17.11",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "^3.0.1",
+    "react-toastify": "^5.3.1",
+    "reactotron-react-js": "^3.3.2",
+    "reactotron-redux": "^3.1.1",
+    "reactotron-redux-saga": "^4.2.2",
+    "redux": "^4.0.1",
+    "redux-saga": "^1.0.4",
+    "redux-thunk": "^2.3.0",
+    "reduxsauce": "^1.1.0",
+    "seamless-immutable": "^7.1.4",
+    "styled-components": "^4.3.2",
+    "yup": "^0.27.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jsx-a11y": "^6.2.2",
+    "eslint-plugin-react": "^7.14.2",
+    "eslint-plugin-react-hooks": "^1.6.1",
+    "husky": "^2.7.0"
+  }
+}

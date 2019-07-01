@@ -4,12 +4,12 @@ import Immutable from 'seamless-immutable';
 /* Types & Action Creators */
 
 const { Types, Creators } = createActions({
-  get<%= props.name %>Request: [],
-  get<%= props.name %>Success: ['data'],
-  get<%= props.name %>Failure: [],
+  get<%= props.pascalCaseName %>Request: [],
+  get<%= props.pascalCaseName %>Success: ['data'],
+  get<%= props.pascalCaseName %>Failure: [],
 });
 
-export const <%= props.name %>Types = Types;
+export const <%= props.pascalCaseName %>Types = Types;
 export default Creators;
 
 /* Initial State */
@@ -22,18 +22,18 @@ export const INITIAL_STATE = Immutable({
 
 /* Reducers */
 
-const get<%= props.name %>Request = state => state.merge({
+const get<%= props.pascalCaseName %>Request = state => state.merge({
   ...state,
   loading: true,
 });
 
-const get<%= props.name %>Success = (state, { data }) => state.merge({
+const get<%= props.pascalCaseName %>Success = (state, { data }) => state.merge({
   data,
   loading: false,
   error: false,
 });
 
-const get<%= props.name %>Failure = state => state.merge({
+const get<%= props.pascalCaseName %>Failure = state => state.merge({
   ...state,
   error: true,
   loading: false,
@@ -42,7 +42,7 @@ const get<%= props.name %>Failure = state => state.merge({
 /* Reducers to types */
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.GET_<%= props.upperCaseName %>_REQUEST]: get<%= props.name %>Request,
-  [Types.GET_<%= props.upperCaseName %>_SUCCESS]: get<%= props.name %>Success,
-  [Types.GET_<%= props.upperCaseName %>_FAILURE]: get<%= props.name %>Failure,
+  [Types.GET_<%= props.upperCaseName %>_REQUEST]: get<%= props.pascalCaseName %>Request,
+  [Types.GET_<%= props.upperCaseName %>_SUCCESS]: get<%= props.pascalCaseName %>Success,
+  [Types.GET_<%= props.upperCaseName %>_FAILURE]: get<%= props.pascalCaseName %>Failure,
 });

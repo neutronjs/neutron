@@ -3,10 +3,10 @@ import { NeutronUtils } from '../../utils'
 
 module.exports = {
   name: 'create',
-  description: 'Create new app using create-react-app with Duck Pattern',
+  description: 'Create new react app with duck pattern',
   run: async (toolbox: GluegunToolbox) => {
-    const { parameters, filesystem, system, template }: GluegunToolbox = toolbox
-    const { terminal, nodeModule, packageManager } = new NeutronUtils(toolbox)
+    const { parameters, filesystem, template, system }: GluegunToolbox = toolbox
+    const { terminal, packageManager } = new NeutronUtils(toolbox)
 
     const appName = parameters.first
 
@@ -21,70 +21,7 @@ module.exports = {
     }
 
     try {
-      terminal.info('Create React App is running...')
-
-      await nodeModule.run('create-react-app', appName)
-
-      terminal.success('Project was created!', true)
-      terminal.info(`Installing dependencies...`)
-
-      terminal.info(
-        await packageManager.install(
-          [
-            '@rocketseat/unform',
-            'axios',
-            'connected-react-router',
-            'dotenv',
-            'history',
-            'lodash',
-            'prop-types',
-            'react',
-            'react-dom',
-            'react-redux',
-            'react-router-dom',
-            'react-scripts',
-            'react-toastify',
-            'reactotron-react-js',
-            'reactotron-redux',
-            'reactotron-redux-saga',
-            'redux',
-            'redux-saga',
-            'redux-thunk',
-            'reduxsauce',
-            'seamless-immutable',
-            'styled-components',
-            'yup'
-          ],
-          false
-        )
-      )
-
-      terminal.success('Dependencies: OK!', true)
-      terminal.info(`Installing 'dev' dependencies...`)
-
-      terminal.info(
-        await packageManager.install(
-          [
-            '@commitlint/cli',
-            '@commitlint/config-conventional',
-            'eslint',
-            'eslint-config-airbnb',
-            'eslint-plugin-import',
-            'eslint-plugin-jsx-a11y',
-            'eslint-plugin-react',
-            'eslint-plugin-react-hooks',
-            'husky'
-          ],
-          true
-        )
-      )
-
-      terminal.success('Dev Dependencies: OK!', true)
-      terminal.info('Configuring Duck Pattern...')
-
-      await filesystem.removeAsync(filesystem.path(appName, '.git'))
-      await filesystem.removeAsync(filesystem.path(appName, 'public'))
-      await filesystem.removeAsync(filesystem.path(appName, 'src'))
+      terminal.info('Creating App project structure...')
 
       const files: string[] = [
         'public/favicon.ico.ejs',
@@ -113,6 +50,7 @@ module.exports = {
         '.gitignore.ejs',
         'commitlint.config.js.ejs',
         'dockerfile.ejs',
+        'package.json.ejs',
         'LICENSE.ejs',
         'README.md.ejs'
       ]
@@ -122,22 +60,69 @@ module.exports = {
       generators = files.reduce((prev, file) => {
         const gen = template.generate({
           template: `react/create/${file}`,
-          target: `${appName}/${file.replace('.ejs', '')}`
+          target: `${appName}/${file.replace('.ejs', '')}`,
+          props: { name: appName }
         })
         return prev.concat([gen])
       }, generators)
 
       await Promise.all(generators)
 
-      if (system.which('git')) {
-        terminal.info(await system.run(`cd ${appName} && git init`))
+      const { latest } = parameters.options
+
+      if (latest) {
+        try {
+          const dependencies = [
+            '@rocketseat/unform',
+            'axios',
+            'connected-react-router',
+            'dotenv',
+            'history',
+            'lodash',
+            'prop-types',
+            'react',
+            'react-dom',
+            'react-redux',
+            'react-router-dom',
+            'react-scripts',
+            'react-toastify',
+            'reactotron-react-js',
+            'reactotron-redux',
+            'reactotron-redux-saga',
+            'redux',
+            'redux-saga',
+            'redux-thunk',
+            'reduxsauce',
+            'seamless-immutable',
+            'styled-components',
+            'yup'
+          ]
+
+          const devDependencies = [
+            '@commitlint/cli',
+            '@commitlint/config-conventional',
+            'eslint',
+            'eslint-config-airbnb',
+            'eslint-plugin-import',
+            'eslint-plugin-jsx-a11y',
+            'eslint-plugin-react',
+            'eslint-plugin-react-hooks',
+            'husky'
+          ]
+
+          terminal.info(await packageManager.install(dependencies, false))
+          terminal.info(await packageManager.install(devDependencies, false))
+        } catch (err) {
+          terminal.error(err)
+        }
       }
 
-      if (system.which('code')) {
-        await system.run(`code ${appName}/.`)
-      }
+      terminal.success(`The project was created. Let's Code!`, true)
 
-      terminal.success(`Process completed successfully. Let's Code!`, true)
+      terminal.success(`   $ cd ${appName}`)
+      system.which('yarn')
+        ? terminal.success(`   $ yarn install`, true)
+        : terminal.success(`   $ npm install`, true)
     } catch (err) {
       terminal.error(err)
     }

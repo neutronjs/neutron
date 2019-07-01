@@ -1,7 +1,7 @@
 {
   "name": "@somadevs/neutron",
   "description": "This CLI was developed to help developers create new projects quickly and easily",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "main": "build/cli.js",
   "license": "MIT",
   "bin": {
@@ -11,12 +11,10 @@
     "format": "prettier --write **/*.{js,ts,tsx,json}",
     "lint": "tslint -p .",
     "compile": "tsc -p .",
-    "copytemplate": "rm -rf build/templates && yes | cp -rf src/templates build/templates",
-    "build": "yarn format && yarn lint && yarn compile && yarn copytemplate",
+    "templatescopy": "rm -rf build/templates && yes | cp -rf src/templates build/templates",
+    "build": "yarn format && yarn lint && yarn compile && yarn templatescopy",
     "test": "jest",
-    "watch": "jest --watch",
-    "snapupdate": "jest --updateSnapshot",
-    "coverage": "jest --coverage"
+    "watch": "jest --watch"
   },
   "author": {
     "name": "Thiago de Souza",
@@ -54,7 +52,6 @@
     }
   },
   "dependencies": {
-    "create-react-app": "^3.0.1",
     "gluegun": "^3.3.0",
     "ts-node": "^8.2.0",
     "typescript": "^3.5.1"

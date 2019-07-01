@@ -13,9 +13,9 @@ module.exports = {
       return
     }
 
-    const name = strings.pascalCase(parameters.first)
+    const pascalCaseName = strings.pascalCase(parameters.first)
     const camelCaseName = strings.camelCase(parameters.first)
-    const upperCaseName = strings.upperCase(name)
+    const upperCaseName = strings.upperCase(pascalCaseName).replace(' ', '_')
     const file = `src/store/ducks/${camelCaseName}.js`
 
     if (filesystem.exists(file)) {
@@ -26,7 +26,7 @@ module.exports = {
     await template.generate({
       template: 'react/add-duck/duck.js.ejs',
       target: file,
-      props: { name, upperCaseName }
+      props: { pascalCaseName, upperCaseName }
     })
 
     terminal.info(`Creating new duck: "${file}" ...`)

@@ -2,7 +2,13 @@
   <img src="assets/neutron.png" width="300" />
 </h1>
 <div align="center">
-    The best tool to speed up your development process! 💻️
+  The best tool to speed up your development process! 💻️
+</div>
+<div align="center">
+
+[![npm](https://img.shields.io/npm/v/@somadevs/neutron.svg)](https://www.npmjs.com/package/@somadevs/neutron)<space><space>
+[![Build Status](https://travis-ci.org/somadevs/neutron.svg?branch=master)](https://travis-ci.org/somadevs/neutron)<space><space>
+
 </div>
 
 ## Overview
@@ -34,7 +40,7 @@ $ neutron -h
   react add:duck         Add new duck file
   react add:page         Add new page files
   react add:saga         Add new saga file
-  react create           Create new app using create-react-app with Duck Pattern
+  react create           Create new react app with duck pattern
   help (h)               -
   version (v)            Output the version number
 ```
