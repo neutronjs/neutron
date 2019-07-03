@@ -35,6 +35,6 @@ module.exports = {
     )
 
     terminal.info(`  import { ${name}Types } from '../ducks/${camelCaseName}';`)
-    terminal.info(`  import { add${name}Request } from './${camelCaseName}';)`)
+    terminal.info(`  import { add${name}Request } from './${camelCaseName}';`)
   }
 }
