@@ -1,0 +1,48 @@
+import { createReducer, createActions } from 'reduxsauce';
+import Immutable from 'seamless-immutable';
+
+/* Types & Action Creators */
+
+const { Types, Creators } = createActions({
+  get<%= props.pascalCaseName %>Request: [],
+  get<%= props.pascalCaseName %>Success: ['data'],
+  get<%= props.pascalCaseName %>Failure: [],
+});
+
+export const <%= props.pascalCaseName %>Types = Types;
+export default Creators;
+
+/* Initial State */
+
+export const INITIAL_STATE = Immutable({
+  loading: false,
+  data: [],
+  error: false,
+});
+
+/* Reducers */
+
+const get<%= props.pascalCaseName %>Request = (state) => state.merge({
+  ...state,
+  loading: true,
+});
+
+const get<%= props.pascalCaseName %>Success = (state, { data }) => state.merge({
+  data,
+  loading: false,
+  error: false,
+});
+
+const get<%= props.pascalCaseName %>Failure = (state) => state.merge({
+  ...state,
+  error: true,
+  loading: false,
+});
+
+/* Reducers to types */
+
+export const reducer = createReducer(INITIAL_STATE, {
+  [Types.GET_<%= props.upperCaseName %>_REQUEST]: get<%= props.pascalCaseName %>Request,
+  [Types.GET_<%= props.upperCaseName %>_SUCCESS]: get<%= props.pascalCaseName %>Success,
+  [Types.GET_<%= props.upperCaseName %>_FAILURE]: get<%= props.pascalCaseName %>Failure,
+});

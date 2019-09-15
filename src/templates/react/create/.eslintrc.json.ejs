@@ -1,18 +1,28 @@
 {
   "parser": "babel-eslint",
-  "extends": "airbnb",
+  "extends": [
+    "airbnb"
+  ],
   "env": {
     "browser": true,
     "jest": true
   },
-  "plugins": ["react", "jsx-a11y", "import"],
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import"
+  ],
   "rules": {
     "react/jsx-filename-extension": [
       "error",
       {
-        "extensions": [".js", ".jsx"]
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
       }
     ],
+    "single-quote": "off",
     "camelcase": "off",
     "global-require": "off",
     "import/prefer-default-export": "off",
@@ -21,7 +31,7 @@
     "no-unused-vars": [
       "error",
       {
-        "argsIgnorePatter": "^_"
+        "argsIgnorePattern": "^_"
       }
     ]
   }

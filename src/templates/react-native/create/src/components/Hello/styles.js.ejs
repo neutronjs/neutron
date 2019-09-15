@@ -1,0 +1,30 @@
+import { StyleSheet } from 'react-native';
+import { colors, metrics } from '~/styles';
+
+export default StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    backgroundColor: colors.secundary,
+    borderRadius: metrics.baseRadius,
+    display: 'flex',
+    height: 300,
+    justifyContent: 'center',
+    marginTop: metrics.screenHeight * 0.2,
+    width: 300,
+  },
+  logo: {
+    height: 150,
+    width: 150,
+  },
+  information: {
+    color: colors.lighter,
+    fontSize: 14,
+    marginTop: metrics.baseMargin * 2,
+    textAlign: 'center',
+  },
+  title: {
+    color: colors.lighter,
+    fontSize: 24,
+    textAlign: 'center',
+  },
+});

@@ -1,0 +1,19 @@
+import React from 'react';
+import { Image, Text, View } from 'react-native';
+
+import styles from './styles';
+
+export default function Hello() {
+  return (
+    <View style={styles.container}>
+      <Image
+        source={{
+          uri: 'https://avatars.githubusercontent.com/u/54922771?v=4',
+        }}
+        style={styles.logo}
+      />
+      <Text style={styles.title}>NeutronJS</Text>
+      <Text style={styles.information}>React Native Template!</Text>
+    </View>
+  );
+}

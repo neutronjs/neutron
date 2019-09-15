@@ -1,7 +1,7 @@
 {
-  "name": "@somadevs/neutron",
+  "name": "@neutron.js/cli",
   "description": "This CLI was developed to help developers create new projects quickly and easily",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "build/cli.js",
   "license": "MIT",
   "bin": {
@@ -12,23 +12,22 @@
     "lint": "tslint -p .",
     "compile": "tsc -p .",
     "templatescopy": "rm -rf build/templates && yes | cp -rf src/templates build/templates",
-    "build": "yarn format && yarn lint && yarn compile && yarn templatescopy",
-    "test": "jest",
-    "watch": "jest --watch"
+    "build": "yarn format && yarn lint && yarn compile && yarn templatescopy"
   },
   "author": {
     "name": "Thiago de Souza",
     "email": "email@thiagodesouza.com.br",
-    "url": "https://www.thiagodesouza.com.br"
+    "url": "https://github.com/thiagodesouza"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/somadevs/neutron"
+    "url": "https://github.com/neutronjs/neutron-cli"
   },
   "keywords": [
     "neutron",
+    "expo",
     "react",
-    "somadevs",
+    "react-native",
     "node",
     "typescript",
     "gluegun"
@@ -39,7 +38,6 @@
     "build",
     "LICENSE",
     "readme.md",
-    "docs",
     "bin"
   ],
   "jest": {
@@ -52,21 +50,21 @@
     }
   },
   "dependencies": {
-    "gluegun": "^3.3.0",
-    "ts-node": "^8.2.0",
-    "typescript": "^3.5.1"
+    "exec-sh": "^0.3.2",
+    "gluegun": "^3.3.3",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.6.2"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.0.0",
-    "@commitlint/config-conventional": "^8.0.0",
-    "@types/jest": "^24.0.13",
-    "@types/node": "^12.0.4",
-    "husky": "^2.3.0",
-    "jest": "^24.8.0",
-    "prettier": "^1.12.1",
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.2",
+    "husky": "^3.0.4",
+    "prettier": "^1.18.2",
     "ts-jest": "^24.0.2",
-    "tslint": "^5.12.0",
-    "tslint-config-prettier": "^1.17.0",
+    "tslint": "^5.19.0",
+    "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^8.0.1"
   }
 }

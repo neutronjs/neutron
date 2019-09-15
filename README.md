@@ -1,62 +1,58 @@
-<h1 align="center">
-  <img src="assets/neutron.png" width="300" />
-</h1>
-<div align="center">
-  The best tool to speed up your development process! 💻️
-</div>
-<div align="center">
+## 🚀 Overview
 
-[![npm](https://img.shields.io/npm/v/@somadevs/neutron.svg)](https://www.npmjs.com/package/@somadevs/neutron)<space><space>
-[![Build Status](https://travis-ci.org/somadevs/neutron.svg?branch=master)](https://travis-ci.org/somadevs/neutron)<space><space>
+This CLI was developed to help developers create new react projects with [Redux](https://github.com/reduxjs/redux) + [Duck Pattern](https://github.com/erikras/ducks-modular-redux).
 
-</div>
+#### Templates and Scaffolding
 
-## Overview
+- [x] React JS
+- [x] React Native
 
-This CLI was developed to help developers create new projects quickly and easily.
+<br/>
 
-#### Templates and Scaffold
-
-- [x] ReactJS
-- [ ] React Native
-- [ ] Node REST API
-- [ ] Node GraphQL API
-
-## Quick Start
+## ‍👨🏽‍💻 Quick Start
 
 To install Neutron CLI, execute into your terminal:
 
 ```shell
-$ npm i @somadevs/neutron -g
+# yarn
+$ yarn global add @neutron.js/cli
+
+# npm
+$ npm i @neutron.js/cli -g
 ```
 
 Command list:
 
 ```shell
-$ neutron -h
+Starts With:
+  neutron create           Create new project with React
 
-  neutron                -
-  react add:component    Add new component files
-  react add:duck         Add new duck file
-  react add:page         Add new page files
-  react add:saga         Add new saga file
-  react create           Create new react app with duck pattern
-  help (h)               -
-  version (v)            Output the version number
+Commands:
+  neutron add:component    Add new component files
+  neutron add:duck         Add new duck file
+  neutron add:page         Add new page files
+  neutron add:saga         Add new saga file
+
+Utils:
+  neutron -h               Show help information
+  neutron -v               Output the version number
 ```
 
-## What's under the hood?
+<br/>
 
-⭐ [create-react-app](https://github.com/facebook/create-react-app) to create a project basis <br/>
+## 🚘 What's under the hood?
+
 ⭐ [gluegun](https://github.com/infinitered/gluegun) toolkit for building node-based command-line interfaces
 
-## Contributing
+<br/>
+
+## 📃 Contributing
 
 Thanks for your interest on our project. Take a moment to read our guidelines:
 
 - [Contributing](.github/CONTRIBUTING.md)
 - [Code of Conduct](.github/CODE_OF_CONDUCT.md)
 
-## License
+## 📃 License
 
-MIT © [Somadevs](https://github.com/somadevs)
+MIT © [NeutronJs](https://github.com/neutronjs)

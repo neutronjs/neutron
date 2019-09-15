@@ -1,0 +1,17 @@
+import { StyleSheet } from 'react-native';
+import { colors, metrics } from '~/styles';
+
+export default StyleSheet.create({
+  container: {
+    backgroundColor: colors.background,
+    color: colors.primary,
+    alignItems: 'center',
+    height: metrics.screenHeight,
+    width: metrics.screenWidth,
+    justifyContent: 'center',
+  },
+  title: {
+    fontSize: 24,
+    color: colors.lighter,
+  },
+});
