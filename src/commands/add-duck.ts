@@ -22,12 +22,12 @@ class AddDuckCommand {
       strings
     }: GluegunToolbox = toolbox;
 
-    if (GetCurrentPlatform() === Platform.INVALID) {
-      PrintInvalidOperation();
-      return;
-    }
-
     if (!parameters.options.h && parameters.first) {
+      if (GetCurrentPlatform() === Platform.INVALID) {
+        PrintInvalidOperation();
+        return;
+      }
+
       if (!parameters.first) {
         PrintMessage(`The duck name is not provided`, MessageType.ERROR);
         return;

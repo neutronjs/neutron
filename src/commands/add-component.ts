@@ -17,12 +17,12 @@ class AddComponentCommand {
   public async run(toolbox: GluegunToolbox) {
     const { commandName, parameters, template, filesystem, strings } = toolbox;
 
-    if (GetCurrentPlatform() === Platform.INVALID) {
-      PrintInvalidOperation();
-      return;
-    }
-
     if (!parameters.options.h && parameters.first) {
+      if (GetCurrentPlatform() === Platform.INVALID) {
+        PrintInvalidOperation();
+        return;
+      }
+
       const settings = GetSettings(commandName);
 
       if (!parameters.first) {
