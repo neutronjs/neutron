@@ -1,6 +1,6 @@
 ## 🚀 Overview
 
-This CLI was developed to help developers create new react projects with [Redux](https://github.com/reduxjs/redux) + [Duck Pattern](https://github.com/erikras/ducks-modular-redux).
+Neutron is a CLI developed to help developers create new react projects with [Redux](https://redux.js.org/) + [Redux Saga](https://redux-saga.js.org/) and offers well-structured code standardization.
 
 #### Templates and Scaffolding
 
@@ -11,7 +11,7 @@ This CLI was developed to help developers create new react projects with [Redux]
 
 ## ‍👨🏽‍💻 Quick Start
 
-To install Neutron CLI, execute into your terminal:
+To install Neutron JS, execute into your terminal:
 
 ```shell
 # yarn
@@ -53,6 +53,8 @@ Thanks for your interest on our project. Take a moment to read our guidelines:
 - [Contributing](.github/CONTRIBUTING.md)
 - [Code of Conduct](.github/CODE_OF_CONDUCT.md)
 
+<br/>
+
 ## 📃 License
 
-MIT © [NeutronJs](https://github.com/neutronjs)
+MIT © [Neutron JS](http://www.neutronjs.com/)
