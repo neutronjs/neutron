@@ -63,7 +63,7 @@ class AddSagaCommand {
         2
       );
       PrintMessage(
-        `import { add${name}Request } from './${camelCaseName}';`,
+        `import { get${name}Request } from './${camelCaseName}';`,
         MessageType.DEFAULT,
         2
       );
