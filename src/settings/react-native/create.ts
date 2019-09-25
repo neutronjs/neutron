@@ -48,7 +48,8 @@ export default {
       "redux",
       "redux-saga",
       "reduxsauce",
-      "seamless-immutable"
+      "seamless-immutable",
+      "styled-components"
     ],
     devDependencies: [
       "babel-eslint",

@@ -1,30 +1,31 @@
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native';
 import { colors, metrics } from '~/styles';
 
-export default StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    backgroundColor: colors.secundary,
-    borderRadius: metrics.baseRadius,
-    display: 'flex',
-    height: 300,
-    justifyContent: 'center',
-    marginTop: metrics.screenHeight * 0.2,
-    width: 300,
-  },
-  logo: {
-    height: 150,
-    width: 150,
-  },
-  information: {
-    color: colors.lighter,
-    fontSize: 14,
-    marginTop: metrics.baseMargin * 2,
-    textAlign: 'center',
-  },
-  title: {
-    color: colors.lighter,
-    fontSize: 24,
-    textAlign: 'center',
-  },
-});
+export const StyledContainer = styled.View`
+  align-items: center;
+  background-color: ${colors.secundary};
+  border-radius: ${metrics.baseRadius}px;
+  display: flex;
+  height: 300;
+  justify-content: center;
+  margin-top: ${metrics.screenHeight * 0.2}px;
+  width: 300;
+`;
+
+export const StyledLogo = styled.Image`
+  height: 150px;
+  width: 150px;
+`;
+
+export const StyledTitle = styled.Text`
+  color: ${colors.lighter};
+  font-size: 24px;
+  text-align: center;
+`;
+
+export const StyledMessage = styled.Text`
+  color: ${colors.lighter};
+  font-size: 14px;
+  margin-top: ${metrics.baseMargin * 2}px;
+  text-align: center;
+`;

@@ -1,13 +1,12 @@
 import React from 'react';
-import { View } from 'react-native';
 
 import Hello from '~/components/Hello';
-import styles from './styles';
+import { StyledContainer } from './styles';
 
 const Main = () => (
-  <View style={styles.container}>
-    <Hello />
-  </View>
+  <StyledContainer>
+    <Hello title="Neutron JS" message="React Native Template!" />
+  </StyledContainer>
 );
 
 export default Main;

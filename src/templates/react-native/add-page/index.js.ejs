@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View } from 'react-native';
-
-import styles from './styles';
+import { StyledContainer, StyledTitle } from './styles';
 
 function <%= props.name %>() {
   const [message, setMessage] = useState(null);
@@ -11,9 +9,9 @@ function <%= props.name %>() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{message}</Text>
-    </View>
+    <StyledContainer>
+      <StyledTitle>{message}</StyledTitle>
+    </StyledContainer>
   );
 }
 
