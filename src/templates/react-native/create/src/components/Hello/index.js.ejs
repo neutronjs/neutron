@@ -1,19 +1,34 @@
 import React from 'react';
-import { Image, Text, View } from 'react-native';
+import PropTypes from 'prop-types';
 
-import styles from './styles';
+import {
+  StyledContainer,
+  StyledLogo,
+  StyledTitle,
+  StyledMessage,
+} from './styles';
 
-export default function Hello() {
+function Hello({ title, message }) {
   return (
-    <View style={styles.container}>
-      <Image
+    <StyledContainer>
+      <StyledLogo
         source={{
           uri: 'https://avatars.githubusercontent.com/u/54922771?v=4',
         }}
-        style={styles.logo}
       />
-      <Text style={styles.title}>NeutronJS</Text>
-      <Text style={styles.information}>React Native Template!</Text>
-    </View>
+      <StyledTitle>{title}</StyledTitle>
+      <StyledMessage>{message}</StyledMessage>
+    </StyledContainer>
   );
 }
+
+Hello.propTypes = {
+  title: PropTypes.string.isRequired,
+  message: PropTypes.string,
+};
+
+Hello.defaultProps = {
+  message: '',
+};
+
+export default Hello;
