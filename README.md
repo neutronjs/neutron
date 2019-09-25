@@ -31,7 +31,7 @@ Commands:
   neutron add:component    Add new component files
   neutron add:duck         Add new duck file
   neutron add:page         Add new page files
-  neutron add:saga         Add new saga file
+  neutron add:saga         Add new saga and duck files
 
 Utils:
   neutron -h               Show help information
