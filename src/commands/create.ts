@@ -74,10 +74,9 @@ class CreateCommand {
         }
 
         try {
-          PrintMessage(
-            "Creating App project structure...",
-            MessageType.DEFAULT
-          );
+          PrintNewLine();
+
+          PrintMessage("Creating App project structure...", MessageType.INFO);
 
           const files: string[] = settings.template.files;
           let generators: Promise<string>[] = [];

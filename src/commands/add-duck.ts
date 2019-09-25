@@ -4,7 +4,8 @@ import {
   MessageType,
   PrintMessage,
   PrintDivider,
-  PrintInvalidOperation
+  PrintInvalidOperation,
+  PrintNewLine
 } from "../tools/terminal";
 
 class HelpInfo {
@@ -43,7 +44,9 @@ class AddDuckCommand {
         return;
       }
 
-      PrintMessage(`Creating new duck: "${file}" ...`, MessageType.DEFAULT);
+      PrintNewLine();
+
+      PrintMessage(`Creating new duck: "${file}" ...`, MessageType.INFO);
 
       await template.generate({
         template: "shared/add-duck/duck.js.ejs",

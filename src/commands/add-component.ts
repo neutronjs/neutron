@@ -4,7 +4,8 @@ import {
   MessageType,
   PrintMessage,
   PrintDivider,
-  PrintInvalidOperation
+  PrintInvalidOperation,
+  PrintNewLine
 } from "../tools/terminal";
 
 class HelpInfo {
@@ -53,10 +54,9 @@ class AddComponentCommand {
         return acc.concat([gen]);
       }, generators);
 
-      PrintMessage(
-        `Creating new component: "${path}" ...`,
-        MessageType.DEFAULT
-      );
+      PrintNewLine();
+
+      PrintMessage(`Creating new component: "${path}" ...`, MessageType.INFO);
 
       await Promise.all(generators);
 

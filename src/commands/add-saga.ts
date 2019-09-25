@@ -4,7 +4,8 @@ import {
   MessageType,
   PrintMessage,
   PrintDivider,
-  PrintInvalidOperation
+  PrintInvalidOperation,
+  PrintNewLine
 } from "../tools/terminal";
 
 class HelpInfo {
@@ -23,7 +24,9 @@ class AddSagaCommand {
     }: GluegunToolbox = toolbox;
 
     if (!parameters.options.h && parameters.first) {
-      if (GetCurrentPlatform() === Platform.INVALID) {
+      const currentPlatform = GetCurrentPlatform();
+
+      if (currentPlatform === Platform.INVALID) {
         PrintInvalidOperation();
         return;
       }
@@ -33,22 +36,36 @@ class AddSagaCommand {
         return;
       }
 
-      const name = strings.pascalCase(parameters.first);
+      const pascalCaseName = strings.pascalCase(parameters.first);
       const camelCaseName = strings.camelCase(parameters.first);
+      const upperCaseName = strings.upperCase(pascalCaseName).replace(" ", "_");
 
-      const file = `src/store/sagas/${camelCaseName}.js`;
+      const sagaFileName = `src/store/sagas/${camelCaseName}.js`;
+      const duckFileName = `src/store/ducks/${camelCaseName}.js`;
 
-      if (filesystem.exists(file)) {
-        PrintMessage(`This saga already exists: ${file}`, MessageType.ERROR);
+      if (filesystem.exists(sagaFileName)) {
+        PrintMessage(
+          `This saga already exists: ${sagaFileName}`,
+          MessageType.ERROR
+        );
         return;
       }
 
-      PrintMessage(`Creating new saga: "${file}" ...`, MessageType.DEFAULT);
+      PrintNewLine();
+
+      PrintMessage(
+        `Creating new saga: "${sagaFileName}" ...`,
+        MessageType.INFO
+      );
 
       await template.generate({
         template: "shared/add-saga/saga.js.ejs",
-        target: file,
-        props: { name, camelCaseName }
+        target: sagaFileName,
+        props: {
+          isMobile: currentPlatform === Platform.MOBILE,
+          pascalCaseName,
+          camelCaseName
+        }
       });
 
       PrintDivider();
@@ -58,12 +75,44 @@ class AddSagaCommand {
       );
 
       PrintMessage(
-        `import { ${name}Types } from '../ducks/${camelCaseName}';`,
+        `import { ${pascalCaseName}Types } from '../ducks/${camelCaseName}';`,
         MessageType.DEFAULT,
         2
       );
       PrintMessage(
-        `import { get${name}Request } from './${camelCaseName}';`,
+        `import { get${pascalCaseName}Request } from './${camelCaseName}';`,
+        MessageType.DEFAULT,
+        2
+      );
+
+      PrintNewLine();
+
+      if (filesystem.exists(duckFileName)) {
+        PrintMessage(
+          `This duck already exists: ${duckFileName}`,
+          MessageType.LIGHTER
+        );
+        return;
+      }
+
+      PrintMessage(
+        `Creating new duck: "${duckFileName}" ...`,
+        MessageType.INFO
+      );
+
+      await template.generate({
+        template: "shared/add-duck/duck.js.ejs",
+        target: duckFileName,
+        props: { pascalCaseName, upperCaseName }
+      });
+
+      PrintDivider();
+      PrintMessage(
+        'A new duck was created! Please, add duck reference into "src/store/ducks/index.js":',
+        MessageType.SUCCESS
+      );
+      PrintMessage(
+        `import { reducer as ${camelCaseName} } from './${camelCaseName}';`,
         MessageType.DEFAULT,
         2
       );
