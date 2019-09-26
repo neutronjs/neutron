@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Container } from './styles';
+import { StyledContainer } from './styles';
 
 function <%= props.name %>() {
   const [message, setMessage] = useState(null);
@@ -10,9 +10,9 @@ function <%= props.name %>() {
   }, []);
 
   return (
-    <Container>
+    <StyledContainer>
       <h1>{message}</h1>
-    </Container>
+    </StyledContainer>
   );
 }
 

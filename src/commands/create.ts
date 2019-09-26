@@ -40,7 +40,6 @@ class CreateCommand {
         const settings = GetSettings(commandName, platformType);
         const { first: appName } = parameters;
         const pascalCaseAppName = strings.pascalCase(appName);
-        PrintDivider();
 
         if (!appName) {
           PrintMessage("The app name is not provided", MessageType.ERROR);
@@ -77,6 +76,7 @@ class CreateCommand {
           PrintNewLine();
 
           PrintMessage("Creating App project structure...", MessageType.INFO);
+          PrintDivider();
 
           const files: string[] = settings.template.files;
           let generators: Promise<string>[] = [];
