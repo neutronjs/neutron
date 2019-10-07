@@ -15,10 +15,10 @@ To install Neutron JS, execute into your terminal:
 
 ```shell
 # yarn
-$ yarn global add @neutron.js/cli
+$ yarn global add @neutronjs/cli
 
 # npm
-$ npm i @neutron.js/cli -g
+$ npm i @neutronjs/cli -g
 ```
 
 Command list:

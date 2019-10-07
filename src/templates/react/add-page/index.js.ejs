@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-
 import { StyledContainer } from './styles';
 
 function <%= props.name %>() {
-  const [message, setMessage] = useState(null);
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     setMessage('<%= props.name %> page!');

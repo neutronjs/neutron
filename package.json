@@ -1,5 +1,5 @@
 {
-  "name": "@neutron.js/cli",
+  "name": "@neutronjs/cli",
   "description": "This CLI was developed to help developers create new projects quickly and easily",
   "version": "2.1.2",
   "main": "build/cli.js",
