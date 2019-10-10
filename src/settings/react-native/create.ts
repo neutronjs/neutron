@@ -40,7 +40,7 @@ export default {
       "prop-types",
       "react",
       "react-dom",
-      "https://github.com/expo/react-native/archive/sdk-34.0.1.tar.gz",
+      "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
       "react-native-gesture-handler@~1.3.0",
       "react-native-web",
       "react-navigation",
