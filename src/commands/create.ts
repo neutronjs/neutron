@@ -10,7 +10,7 @@ import {
 
 class HelpInfo {
   static Message: string = "Usage: neutron create <YourAppName> <platform>";
-  static Options: any = {
+  static Platforms: any = {
     Text: "Platforms:",
     Rows: [
       "--web      New project with ReactJS",
@@ -144,8 +144,8 @@ class CreateCommand {
     PrintMessage(HelpInfo.Message, MessageType.INFO);
     PrintNewLine();
 
-    PrintMessage(HelpInfo.Options.Text, MessageType.DEFAULT);
-    HelpInfo.Options.Rows.forEach(row => {
+    PrintMessage(HelpInfo.Platforms.Text, MessageType.DEFAULT);
+    HelpInfo.Platforms.Rows.forEach(row => {
       PrintMessage(row, MessageType.DEFAULT, 2);
     });
   }

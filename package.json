@@ -1,7 +1,7 @@
 {
   "name": "@neutronjs/cli",
   "description": "This CLI was developed to help developers create new projects quickly and easily",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "main": "build/cli.js",
   "license": "MIT",
   "bin": {
@@ -19,6 +19,18 @@
     "email": "thiago.souza@neutronjs.com",
     "url": "https://github.com/thiagodesouza"
   },
+  "contributors": [
+    {
+      "name": "Luis Vinicius",
+      "email": "luis.vinicius@neutronjs.com",
+      "url": "https://github.com/viniborges"
+    },
+    {
+      "name": "Lucas Martioli",
+      "email": "lucas.martioli@neutronjs.com",
+      "url": "https://github.com/lucasmartioli"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/neutronjs/neutron-cli"
