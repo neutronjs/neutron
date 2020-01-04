@@ -1,7 +1,7 @@
 {
   "name": "@neutronjs/cli",
   "description": "This CLI was developed to help developers create new projects quickly and easily",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "license": "MIT",
   "main": "build/cli.js",
   "bin": {
