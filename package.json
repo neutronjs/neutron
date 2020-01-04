@@ -1,39 +1,23 @@
 {
   "name": "@neutronjs/cli",
   "description": "This CLI was developed to help developers create new projects quickly and easily",
-  "version": "2.1.3",
-  "main": "build/cli.js",
+  "version": "3.0.0",
   "license": "MIT",
+  "main": "build/cli.js",
   "bin": {
     "neutron": "bin/neutron"
   },
   "scripts": {
-    "format": "prettier --write **/*.{js,ts,tsx,json}",
-    "lint": "tslint -p .",
-    "compile": "tsc -p .",
-    "templatescopy": "rm -rf build/templates && yes | cp -rf src/templates build/templates",
-    "build": "yarn format && yarn lint && yarn compile && yarn templatescopy"
+    "format": "prettier --write **/*.{js,jsx,json} && eslint **/*.{js,jsx} --fix"
   },
   "author": {
     "name": "Thiago de Souza",
-    "email": "thiago.souza@neutronjs.com",
+    "email": "dev@thiagodesouza.com",
     "url": "https://github.com/thiagodesouza"
   },
-  "contributors": [
-    {
-      "name": "Luis Vinicius",
-      "email": "luis.vinicius@neutronjs.com",
-      "url": "https://github.com/viniborges"
-    },
-    {
-      "name": "Lucas Martioli",
-      "email": "lucas.martioli@neutronjs.com",
-      "url": "https://github.com/lucasmartioli"
-    }
-  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/neutronjs/neutron-cli"
+    "url": "https://github.com/neutronjs/neutron.git"
   },
   "keywords": [
     "neutron",
@@ -41,42 +25,41 @@
     "react",
     "react-native",
     "node",
-    "typescript",
+    "javascript",
     "gluegun"
   ],
   "files": [
-    "tsconfig.json",
-    "tslint.json",
-    "build",
+    "src",
     "LICENSE",
-    "readme.md",
+    "README.md",
     "bin"
   ],
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node"
+  "lint-staged": {
+    "./**/*.js": [
+      "yarn format",
+      "git add ."
+    ]
   },
   "husky": {
     "hooks": {
+      "pre-commit": "lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "dependencies": {
-    "exec-sh": "^0.3.2",
-    "gluegun": "^3.3.3",
-    "ts-node": "^8.3.0",
-    "typescript": "^3.6.2"
+    "exec-sh": "^0.3.4",
+    "gluegun": "^4.1.2",
+    "hyperquest": "^2.1.3",
+    "tar-pack": "^3.4.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.1.0",
-    "@commitlint/config-conventional": "^8.1.0",
-    "@types/jest": "^24.0.18",
-    "@types/node": "^12.7.2",
-    "husky": "^3.0.4",
-    "prettier": "^1.18.2",
-    "ts-jest": "^24.0.2",
-    "tslint": "^5.19.0",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-config-standard": "^8.0.1"
+    "@commitlint/cli": "^8.3.4",
+    "@commitlint/config-conventional": "^8.3.4",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.19.1",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1"
   }
 }
