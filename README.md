@@ -7,8 +7,6 @@ Neutron is a CLI developed to help developers create new react projects with [Re
 - [x] React JS
 - [x] React Native
 
-<br/>
-
 ## ‍👨🏽‍💻 Quick Start
 
 To install Neutron JS, execute into your terminal:
@@ -38,22 +36,29 @@ Utils:
   neutron -v               Output the version number
 ```
 
-<br/>
-
 ## 🚘 What's under the hood?
 
-⭐ [gluegun](https://github.com/infinitered/gluegun) toolkit for building node-based command-line interfaces
+- ⭐ [exec-sh](https://github.com/tsertkov/exec-sh) - wrapper for `child_process.spawn` with some improvements;
+- ⭐ [gluegun](https://github.com/infinitered/gluegun) - toolkit for building node-based command-line interfaces;
+- ⭐ [hyperquest](https://github.com/substack/hyperquest) - treat http requests as a streaming transport;
+- ⭐ [tar-pack](https://github.com/ForbesLindesay/tar-pack) - package and un-package modules of some sort (in tar/gz bundles);
 
-<br/>
 
 ## 📃 Contributing
 
 Thanks for your interest on our project. Take a moment to read our guidelines:
 
-- [Contributing](.github/CONTRIBUTING.md)
-- [Code of Conduct](.github/CODE_OF_CONDUCT.md)
+- [Contributing](https://www.neutronjs.com/docs/community/contributing)
+- [Code of Conduct](https://www.neutronjs.com/docs/community/code-of-conduct)
 
-<br/>
+## 📮 Contact
+
+We have a few channels for contact:
+
+- Email: [team@neutronjs.com](mailto:team@neutronjs.com)
+- [GitHub Issues](https://github.com/neutronjs/neutron-website/issues)
+
+<hr/>
 
 ## 📃 License
 
