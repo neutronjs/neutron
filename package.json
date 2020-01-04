@@ -31,8 +31,7 @@
   "files": [
     "src",
     "LICENSE",
-    "readme.md",
-    "docs",
+    "README.md",
     "bin"
   ],
   "lint-staged": {
