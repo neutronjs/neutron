@@ -8,13 +8,11 @@ cache:
 install:
   - yarn
 script:
-  - yarn build
+  - yarn format
 deploy:
-  skip_cleanup: true
   provider: npm
   email: $EMAIL
-  api_key:
-    secure: $API_KEY
+  api_key: $NPM_API_KEY
   on:
     tags: true
     repo: neutronjs/neutron-cli
