@@ -49,11 +49,13 @@
   },
   "dependencies": {
     "exec-sh": "^0.3.4",
-    "gluegun": "^4.1.2"
+    "gluegun": "^4.1.2",
+    "hyperquest": "^2.1.3",
+    "tar-pack": "^3.4.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.2.0",
-    "@commitlint/config-conventional": "^8.2.0",
+    "@commitlint/cli": "^8.3.4",
+    "@commitlint/config-conventional": "^8.3.4",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.19.1",

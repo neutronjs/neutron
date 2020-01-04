@@ -2,9 +2,6 @@
  * @typedef {import('gluegun').GluegunToolbox} GluegunToolbox
  */
 
-const { GetSettings } = require('../utils/settings');
-const { PackageManager } = require('../tools/package-manager');
-
 const { TechnologyType } = require('../utils/technology');
 
 const {
@@ -39,7 +36,7 @@ class CreateCommand {
    * @param {GluegunToolbox} toolbox
    */
   async run(toolbox) {
-    const { parameters, filesystem, template, system, strings } = toolbox;
+    const { parameters, filesystem, system, startTemplateResolver } = toolbox;
 
     if (!parameters.options.h && parameters.first) {
       const { react, reactNative } = parameters.options;
@@ -48,32 +45,12 @@ class CreateCommand {
         const technologyType = react
           ? TechnologyType.REACT
           : TechnologyType.REACT_NATIVE;
-        const settings = GetSettings(technologyType);
 
         const { first: appName } = parameters;
-        const pascalCaseAppName = strings.pascalCase(appName);
 
         if (!appName) {
           PrintMessage('The app name is not provided', MessageType.ERROR);
           return;
-        }
-
-        if (Array.isArray(settings.requirements)) {
-          const requirementList = [];
-
-          settings.requirements.forEach((requirement) => {
-            if (!system.which(requirement)) {
-              requirementList.push(requirement);
-            }
-          });
-
-          if (requirementList.length > 0) {
-            PrintMessage('Global package required:', MessageType.ERROR);
-            requirementList.forEach((requirement) => {
-              PrintMessage(`- ${requirement}`, MessageType.ERROR, 2);
-            });
-            return;
-          }
         }
 
         if (filesystem.exists(appName)) {
@@ -90,42 +67,7 @@ class CreateCommand {
           PrintMessage('Creating App project structure...', MessageType.INFO);
           PrintDivider();
 
-          // TODO: init, move files from technology, install deps
-          const { files } = settings.template;
-          let generators = [];
-
-          generators = files.reduce((acc, file) => {
-            const gen = template.generate({
-              template: `${settings.template.path}/${file}`,
-              target: `${appName}/${file.replace('.ejs', '')}`,
-              props: {
-                name: appName,
-                pascalCaseName: pascalCaseAppName,
-              },
-            });
-
-            return acc.concat([gen]);
-          }, generators);
-
-          await Promise.all(generators);
-
-          const { dependencies } = settings.install;
-          const { devDependencies } = settings.install;
-          const packageManager = new PackageManager();
-
-          PrintNewLine();
-          PrintMessage(
-            'Installing packages required by your application in production...',
-            MessageType.INFO,
-          );
-          await packageManager.install(appName, dependencies, false);
-
-          PrintNewLine();
-          PrintMessage(
-            'Installing packages that are only needed for local development and testing...',
-            MessageType.INFO,
-          );
-          await packageManager.install(appName, devDependencies, true);
+          await startTemplateResolver(technologyType, appName);
 
           PrintNewLine();
           PrintMessage(

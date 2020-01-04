@@ -1,7 +1,7 @@
 import { call, put } from 'redux-saga/effects';
-import api from '~/services/api';
+import api from '@/services/api';
 
-import <%= props.pascalCaseName %>Actions from '../ducks/<%= props.camelCaseName %>';
+import <%= props.pascalCaseName %>Actions from '@/store/ducks/<%= props.camelCaseName %>';
 
 export function* get<%= props.pascalCaseName %>Request() {
   try {
@@ -9,7 +9,7 @@ export function* get<%= props.pascalCaseName %>Request() {
     const { data } = yield call(api.get, endpoint);
     yield put(<%= props.pascalCaseName %>Actions.get<%= props.pascalCaseName %>Success(data));
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     yield put(<%= props.pascalCaseName %>Actions.get<%= props.pascalCaseName %>Failure());
   }
 }
