@@ -8,6 +8,7 @@ const hyperquest = require('hyperquest');
 const { unpack } = require('tar-pack');
 
 const { PackageManager } = require('../tools/package-manager');
+const { version } = require('../../package.json');
 
 const {
   MessageType,
@@ -24,9 +25,26 @@ module.exports = async (toolbox) => {
    * @param {string} appName
    */
   toolbox.startTemplateResolver = async (technologyType, appName) => {
-    const stream = hyperquest(
-      `https://codeload.github.com/neutronjs/neutron-start-${technologyType}-template/tar.gz/master`,
-    );
+    const neutronDownloadsUrl = 'https://github.com/neutronjs/neutron/releases/download';
+    const templateUrl = `${neutronDownloadsUrl}/v${version}/neutron-start-${technologyType}-template.tar.gz`;
+
+    const stream = await new Promise((resolve, reject) => {
+      const isRedirect = (status) => [301, 302, 307, 308].indexOf(status) >= 0;
+
+      const request = (url) => {
+        const result = hyperquest(url, {}, (err, res) => {
+          if (err) reject(err);
+
+          if (isRedirect(res.statusCode)) {
+            request(res.headers.location);
+          } else {
+            resolve(result);
+          }
+        });
+      };
+
+      request(templateUrl);
+    });
 
     await new Promise((resolve, reject) => {
       stream.pipe(
@@ -40,15 +58,17 @@ module.exports = async (toolbox) => {
       );
     });
 
-    const packageJsonPath = `./${appName}/package.json`;
-
     const { filesystem, strings } = toolbox;
-    const packageJson = filesystem.read(packageJsonPath, 'json');
 
-    if (packageJson.name) {
-      filesystem.write(packageJsonPath, { ...packageJson, name: appName });
-    } else {
-      // expo project do not contains "name" in package.json
+    const packageJsonPath = `./${appName}/package.json`;
+    const packageJson = filesystem.read(packageJsonPath, 'json');
+    filesystem.write(packageJsonPath, {
+      ...packageJson,
+      name: appName,
+      version: '1.0.0',
+    });
+
+    if ('expo' in packageJson.dependencies) {
       const appJsonPath = `./${appName}/app.json`;
       const appJson = filesystem.read(appJsonPath, 'json');
       const pascalCaseAppName = strings.pascalCase(appName);

@@ -1,18 +1,37 @@
 language: node_js
+
 node_js:
   - node
+
 cache:
   yarn: true
   directories:
     - node_modules
-install:
-  - yarn
+
 script:
-  - yarn format
+  - bash scripts/travis-create-assets.sh
+  - yarn lerna:format
+  - yarn build
+
 deploy:
-  provider: npm
-  email: $EMAIL
-  api_key: $NPM_API_KEY
-  on:
-    tags: true
-    repo: neutronjs/neutron-cli
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    local_dir: website/build
+    on:
+      branch: master
+
+  - provider: releases
+    api_key: $GITHUB_TOKEN
+    skip_cleanup: true
+    overwrite: true
+    file: "temp/packages/*"
+    on:
+      tags: true
+      repo: neutronjs/neutron
+
+  - provider: script
+    script: bash scripts/travis-deploy-npm.sh
+    on:
+      tags: true
+      repo: neutronjs/neutron

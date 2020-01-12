@@ -56,7 +56,7 @@ Thanks for your interest on our project. Take a moment to read our guidelines:
 We have a few channels for contact:
 
 - Email: [team@neutronjs.com](mailto:team@neutronjs.com)
-- [GitHub Issues](https://github.com/neutronjs/neutron-website/issues)
+- [GitHub Issues](https://github.com/neutronjs/neutron/issues)
 
 <hr/>
 

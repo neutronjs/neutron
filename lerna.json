@@ -1,0 +1,21 @@
+{
+  "npmClient": "yarn",
+  "packages": [
+    "packages/neutron-cli",
+    "packages/neutron-start-react-native-template",
+    "packages/neutron-start-react-template",
+    "website"
+  ],
+  "useWorkspaces": true,
+  "version": "3.0.1",
+  "changelog": {
+    "repo": "neutronjs/neutron",
+    "labels": {
+      "neutron: breaking": ":boom: Breaking Change",
+      "neutron: enhancement": ":rocket: Enhancement",
+      "neutron: bug": ":bug: Bug Fix",
+      "neutron: documentation": ":memo: Documentation",
+      "neutron: internal": ":house: Internal"
+    }
+  }
+}
