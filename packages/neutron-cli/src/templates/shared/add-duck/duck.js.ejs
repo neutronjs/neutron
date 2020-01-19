@@ -1,0 +1,27 @@
+import { createSlice } from '@reduxjs/toolkit';
+
+const <%= props.camelCaseName %>Slice = createSlice({
+  name: '<%= props.camelCaseName %>',
+  initialState: {
+    loading: false,
+    data: <%= props.camelCaseName.endsWith('s') ? '[]' : '{}' %>,
+    error: false,
+  },
+  reducers: {
+    get<%= props.pascalCaseName %>Request(state) {
+      state.loading = true;
+    },
+    get<%= props.pascalCaseName %>Success(state, { payload }) {
+      state.loading = false;
+      state.error = false;
+      <%= props.camelCaseName.endsWith('s') ? 'state.data.push(payload)' : 'state.data = payload' %>;
+    },
+    get<%= props.pascalCaseName %>Failure(state) {
+      state.error = true;
+      state.loading = false;
+    },
+  },
+});
+
+export const { reducer } = <%= props.camelCaseName %>Slice;
+export default <%= props.camelCaseName %>Slice.actions;

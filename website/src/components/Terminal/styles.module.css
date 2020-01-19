@@ -1,0 +1,190 @@
+:root {
+  --neutron-color-custom-blue: #37e;
+  --neutron-color-custom-green: #2c9;
+  --neutron-color-custom-purple: #99f;
+  --neutron-color-custom-red: #f44;
+  --neutron-color-custom-yellow: #ff9;
+}
+
+.terminal {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 440px;
+  background-color: var(--neutron-color-dark);
+  box-sizing: border-box;
+  padding: 16px;
+  border-radius: 8px;
+  user-select: none;
+}
+
+.terminal>.header {
+  display: flex;
+}
+
+.terminal>.header>span {
+  height: 14px;
+  width: 14px;
+  background-color: var(--neutron-color-custom-yellow);
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.terminal>.header>span:first-child {
+  background-color: var(--neutron-color-custom-red);
+}
+
+.terminal>.header>span:last-child {
+  background-color: var(--neutron-color-custom-green);
+}
+
+.terminal>.content {
+  font-size: 14.6px;
+  font-family: "Courier New", Courier, monospace;
+  color: var(--neutron-color-lighter);
+  padding: 12px 0;
+}
+
+.terminal>.content p {
+  display: flex;
+  margin: 8px 0;
+}
+
+.terminal>.content .dir {
+  color: var(--neutron-color-custom-purple);
+}
+
+.terminal>.content .command {
+  margin-left: 12px;
+  display: flex;
+  width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: write-command 10s both;
+  animation-iteration-count: infinite;
+  -moz-animation: write-command 10s both;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation: write-command 10s both;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.terminal>.content .commandResult {
+  display: flex;
+  flex-direction: column;
+  height: 0;
+  overflow: hidden;
+  animation: command-result  10s both;
+  animation-iteration-count: infinite;
+  -moz-animation: command-result  10s both;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation: command-result  10s both;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.terminal>.content .commandResult > span {
+  white-space: pre;
+  line-height: 16.8px;
+}
+
+
+.terminal>.content .commandResultClear {
+  margin-left: 12px;
+  display: flex;
+  width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: command-result-clear  10s both;
+  animation-iteration-count: infinite;
+  -moz-animation: command-result-clear  10s both;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation: command-result-clear  10s both;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@keyframes write-command {
+  0% {
+    width: 0;
+  }
+
+  5% {
+    width: 0;
+  }
+
+  15% {
+    width: 128px;
+  }
+
+  100% {
+    width: 128px;
+  }
+}
+
+
+@keyframes command-result {
+  0% {
+    height: 0;
+  }
+
+  18% {
+    height: 0;
+  }
+
+  18.5% {
+    height: 350px;
+  }
+
+  100% {
+    height: 350px;
+  }
+}
+
+@keyframes command-result-clear {
+  0% {
+    width: 0;
+  }
+
+  76% {
+    width: 0;
+  }
+
+  88% {
+    width: 128px;
+  }
+
+  100% {
+    width: 128px;
+  }
+}
+
+@media screen and (max-width: 664px) {
+  .terminal {
+    height: 346px;
+  }
+  .terminal>.content {
+    font-size: 12px;
+  }
+  .terminal>.content .commandResult > span {
+    white-space: pre;
+    line-height: 14px;
+  }
+}
+
+
+@media screen and (max-width: 496px) {
+  .terminal {
+    height: 326px;
+  }
+  .terminal>.content {
+    font-size: 10px;
+  }
+  .terminal>.content .commandResult > span {
+    white-space: pre;
+    line-height: 12px;
+  }
+}
+
+@media screen and (max-width: 436px) {
+  .terminal {
+    display: none;
+  }
+}

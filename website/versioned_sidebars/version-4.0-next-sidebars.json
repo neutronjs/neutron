@@ -1,0 +1,50 @@
+{
+  "version-4.0-next/docs": [
+    {
+      "type": "category",
+      "label": "Introduction",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-4.0-next/introduction/getting-started"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Commands",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-4.0-next/commands/add-component"
+        },
+        {
+          "type": "doc",
+          "id": "version-4.0-next/commands/add-duck"
+        },
+        {
+          "type": "doc",
+          "id": "version-4.0-next/commands/add-page"
+        },
+        {
+          "type": "doc",
+          "id": "version-4.0-next/commands/add-saga"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Community",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-4.0-next/community/contributing"
+        },
+        {
+          "type": "doc",
+          "id": "version-4.0-next/community/code-of-conduct"
+        }
+      ]
+    }
+  ]
+}
