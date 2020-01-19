@@ -1,6 +1,6 @@
 {
   "name": "@neutronjs/start-react-native-template",
-  "version": "4.0.0-next.1",
+  "version": "4.0.0-next.2",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
