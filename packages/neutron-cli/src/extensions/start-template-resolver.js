@@ -103,15 +103,15 @@ module.exports = async (toolbox) => {
 
     PrintNewLine();
     PrintMessage(
-      'Installing packages required by your application in production...',
-      MessageType.INFO,
+      '📦 Installing packages required by your application in production...',
+      MessageType.DEFAULT,
     );
     await packageManager.install(appName, dependencies, false);
 
     PrintNewLine();
     PrintMessage(
-      'Installing packages that are only needed for local development and testing...',
-      MessageType.INFO,
+      '📦 Installing packages that are only needed for local development and testing...',
+      MessageType.DEFAULT,
     );
     await packageManager.install(appName, devDependencies, true);
   };
