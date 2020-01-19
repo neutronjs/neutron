@@ -7,7 +7,7 @@ NPMRC=.npmrc
 echo "//registry.npmjs.org/:email=\${EMAIL}" > $NPMRC
 echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $NPMRC
 
-if node -pe 'JSON.parse(process.argv[1]).version' "$(cat package.json)" | grep 'next'; then
+if node -pe 'JSON.parse(process.argv[1]).version' "$(cat packages/neutron-cli/package.json)" | grep 'next'; then
   # NPM DEPLOY NEUTRON JS CLI WITH TAG
   npm publish packages/neutron-cli --tag next
 else
