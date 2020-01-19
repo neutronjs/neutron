@@ -1,6 +1,6 @@
 {
   "name": "@neutronjs/website",
-  "version": "1.0.0",
+  "version": "4.0.0-next.0",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",

@@ -33,7 +33,9 @@ function NeutronTerminal({ version }) {
           <span>{String.raw`|_| \_|\___|\__,_|\__|_|  \___/|_| |_|\___/|____/ `}</span>
           {printNewLine()}
           <span style={{ color: 'var(--neutron-color-custom-green)' }}>
-            {`React & React Native Flux Architecture CLI ${version}`}
+            {`React & React Native Flux Architecture CLI ${
+              version.split('-')[0]
+            }`}
           </span>
           {printNewLine()}
           {printDivider()}

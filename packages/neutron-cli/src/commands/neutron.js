@@ -21,7 +21,9 @@ class NeutronInfo {
         String.raw`| |\  |  __/ |_| | |_| | | (_) | | | |:|_| |___) |`,
         String.raw`|_| \_|\___|\__,_|\__|_|  \___/|_| |_|\___/|____/ `,
       ],
-      SubTitle: `React & React Native Flux Architecture CLI v${version}`,
+      SubTitle: `React & React Native Flux Architecture CLI v${
+        version.split('-')[0]
+      }`,
     };
   }
 
