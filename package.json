@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "1.0.0",
+  "version": "3.0.1",
   "workspaces": [
     "packages/neutron-cli",
     "packages/neutron-start-react-native-template",

@@ -40,9 +40,8 @@ class AddDuckCommand {
         return;
       }
 
-      const pascalCaseName = strings.pascalCase(parameters.first);
       const camelCaseName = strings.camelCase(parameters.first);
-      const upperCaseName = strings.upperCase(pascalCaseName).replace(' ', '_');
+      const pascalCaseName = strings.pascalCase(parameters.first);
       const file = `src/store/ducks/${camelCaseName}.js`;
 
       if (filesystem.exists(file)) {
@@ -57,7 +56,7 @@ class AddDuckCommand {
       await template.generate({
         template: 'shared/add-duck/duck.js.ejs',
         target: file,
-        props: { pascalCaseName, upperCaseName },
+        props: { camelCaseName, pascalCaseName },
       });
 
       PrintDivider();

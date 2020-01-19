@@ -40,9 +40,8 @@ class AddSagaCommand {
         return;
       }
 
-      const pascalCaseName = strings.pascalCase(parameters.first);
       const camelCaseName = strings.camelCase(parameters.first);
-      const upperCaseName = strings.upperCase(pascalCaseName).replace(' ', '_');
+      const pascalCaseName = strings.pascalCase(parameters.first);
 
       const sagaFileName = `src/store/sagas/${camelCaseName}.js`;
       const duckFileName = `src/store/ducks/${camelCaseName}.js`;
@@ -66,8 +65,8 @@ class AddSagaCommand {
         template: 'shared/add-saga/saga.js.ejs',
         target: sagaFileName,
         props: {
-          pascalCaseName,
           camelCaseName,
+          pascalCaseName,
         },
       });
 
@@ -78,7 +77,7 @@ class AddSagaCommand {
       );
 
       PrintMessage(
-        `import { ${pascalCaseName}Types } from '../ducks/${camelCaseName}';`,
+        `import ${pascalCaseName}Actions from '@/store/ducks/${camelCaseName}';`,
         MessageType.DEFAULT,
         2,
       );
@@ -106,7 +105,7 @@ class AddSagaCommand {
       await template.generate({
         template: 'shared/add-duck/duck.js.ejs',
         target: duckFileName,
-        props: { pascalCaseName, upperCaseName },
+        props: { camelCaseName, pascalCaseName },
       });
 
       PrintDivider();
