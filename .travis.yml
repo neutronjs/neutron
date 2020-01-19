@@ -9,7 +9,7 @@ cache:
     - node_modules
 
 script:
-  - bash scripts/travis-create-assets.sh
+  - node scripts/travis-create-assets.js
   - yarn lerna:format
   - yarn build
 
@@ -25,7 +25,8 @@ deploy:
     api_key: $GITHUB_TOKEN
     skip_cleanup: true
     overwrite: true
-    file: "temp/packages/*"
+    file_glob: true
+    file: "temp/*"
     on:
       tags: true
       repo: neutronjs/neutron
