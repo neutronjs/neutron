@@ -10,8 +10,6 @@
   "scripts": {
     "build": "yarn workspace @neutronjs/website build",
     "start": "yarn workspace @neutronjs/website start",
-    "start:react": "yarn workspace @neutronjs/start-react-template start",
-    "start:react-native": "yarn workspace @neutronjs/start-react-native-template start",
     "postinstall": "yarn lerna:bootstrap",
     "lerna:bootstrap": "lerna bootstrap",
     "lerna:changelog": "lerna-changelog",
@@ -27,15 +25,9 @@
       "@commitlint/config-conventional"
     ]
   },
-  "lint-staged": {
-    "./**/*.js": [
-      "yarn lerna:format",
-      "git add ."
-    ]
-  },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
+      "pre-commit": "lerna run --concurrency 1 --stream precommit",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
@@ -44,7 +36,6 @@
     "@commitlint/config-conventional": "^8.3.4",
     "husky": "^4.0.10",
     "lerna": "^3.20.2",
-    "lerna-changelog": "^1.0.0",
-    "lint-staged": "^9.5.0"
+    "lerna-changelog": "^1.0.0"
   }
 }

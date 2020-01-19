@@ -1,24 +1,22 @@
-import { createStore, compose, applyMiddleware } from 'redux';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import { routerMiddleware } from 'connected-react-router';
-import thunkMiddleware from 'redux-thunk';
 
 import rootReducer from './ducks';
 import sagas from './sagas';
 
-import history from '@/routes/history';
+import history from '../routes/history';
 
 const sagaMiddleware = createSagaMiddleware();
-const middlewares = [
-  sagaMiddleware,
-  thunkMiddleware,
-  routerMiddleware(history),
-];
 
-const store = createStore(
-  rootReducer(history),
-  compose(applyMiddleware(...middlewares)),
-);
+const store = configureStore({
+  reducer: rootReducer(history),
+  middleware: [
+    sagaMiddleware,
+    ...getDefaultMiddleware(),
+    routerMiddleware(history),
+  ],
+});
 
 sagaMiddleware.run(sagas);
 

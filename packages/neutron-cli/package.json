@@ -8,7 +8,8 @@
     "neutron": "bin/neutron"
   },
   "scripts": {
-    "format": "prettier --write **/*.{js,jsx,json} && eslint **/*.{js,jsx} --fix"
+    "format": "prettier --write **/*.{js,jsx,json} && eslint **/*.{js,jsx} --fix",
+    "precommit": "lint-staged"
   },
   "author": {
     "name": "Thiago de Souza",
@@ -34,6 +35,12 @@
     "README.md",
     "bin"
   ],
+  "lint-staged": {
+    "**/*.{js,jsx}": [
+      "yarn format",
+      "git add ."
+    ]
+  },
   "dependencies": {
     "exec-sh": "^0.3.4",
     "gluegun": "^4.1.2",
@@ -44,6 +51,7 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.19.1",
+    "lint-staged": "^9.5.0",
     "prettier": "^1.19.1"
   }
 }

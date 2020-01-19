@@ -8,7 +8,8 @@
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
-    "format": "prettier --write **/*.{js,jsx,json} && eslint **/*.{js,jsx} --fix"
+    "format": "prettier --write **/*.{js,jsx,json} && eslint **/*.{js,jsx} --fix",
+    "precommit": "lint-staged"
   },
   "browserslist": {
     "production": [
@@ -20,6 +21,12 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "lint-staged": {
+    "**/*.{js,jsx}": [
+      "yarn format",
+      "git add ."
     ]
   },
   "dependencies": {
@@ -38,6 +45,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^2.3.0",
+    "lint-staged": "^9.5.0",
     "prettier": "^1.19.1"
   }
 }
