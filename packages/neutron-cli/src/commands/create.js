@@ -64,14 +64,17 @@ class CreateCommand {
         try {
           PrintNewLine();
 
-          PrintMessage('Creating App project structure...', MessageType.INFO);
+          PrintMessage(
+            '✨ Creating App project structure...',
+            MessageType.DEFAULT,
+          );
           PrintDivider();
 
           await startTemplateResolver(technologyType, appName);
 
           PrintNewLine();
           PrintMessage(
-            'The project was created successfuly!',
+            '🚀 The project was created successfuly!',
             MessageType.SUCCESS,
           );
           PrintDivider();
@@ -80,7 +83,7 @@ class CreateCommand {
           const manager = system.which('yarn') ? 'yarn' : 'npm run';
 
           PrintMessage(
-            'We suggest that you begin by typing:',
+            '👉 We suggest that you begin by typing:',
             MessageType.DEFAULT,
           );
           PrintNewLine();
