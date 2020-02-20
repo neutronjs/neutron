@@ -15,6 +15,13 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'neutronjs',
   projectName: 'neutron-cli',
+  algolia: {
+      apiKey: '7ff42c6bf2833e56fbabd0f4da10e002',
+      indexName: 'neutron',
+      algoliaOptions: {
+        facetFilters: [`version:${versions[0]}`],
+      },
+  },
   themeConfig: {
     navbar: {
       title: 'Neutron JS',
