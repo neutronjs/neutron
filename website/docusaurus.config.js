@@ -17,8 +17,8 @@ module.exports = {
   projectName: 'neutron-cli',
   themeConfig: {
     algolia: {
-      apiKey: '7ff42c6bf2833e56fbabd0f4da10e002',
       indexName: 'neutron',
+      apiKey: '7ff42c6bf2833e56fbabd0f4da10e002',
     },
     navbar: {
       title: 'Neutron JS',
