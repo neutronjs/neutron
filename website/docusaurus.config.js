@@ -16,6 +16,10 @@ module.exports = {
   organizationName: 'neutronjs',
   projectName: 'neutron-cli',
   themeConfig: {
+    algolia: {
+      indexName: 'neutron',
+      apiKey: '7ff42c6bf2833e56fbabd0f4da10e002',
+    },
     navbar: {
       title: 'Neutron JS',
       logo: {
